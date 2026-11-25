@@ -2,6 +2,8 @@ package model;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import java.math.BigDecimal;
+
 public abstract class EnergyPoint {
     private static final double MIN_MARKET_PRICE = -500;
     private static final double MAX_MARKET_PRICE = 4000;
@@ -46,6 +48,17 @@ public abstract class EnergyPoint {
         if (price < MIN_MARKET_PRICE || price > MAX_MARKET_PRICE) {
             return fieldName + " " + price
                     + " is outside the market range [-500, 4000] EUR/MWh; interval skipped.";
+        }
+        return null;
+    }
+
+    protected static String validateQuantity(final BigDecimal quantity) {
+        if (quantity == null) {
+            return "Quantity is null; interval skipped.";
+        }
+        if (quantity.signum() < 0) {
+            return "Quantity " + quantity
+                    + " is below the minimum allowed value 0; interval skipped.";
         }
         return null;
     }
