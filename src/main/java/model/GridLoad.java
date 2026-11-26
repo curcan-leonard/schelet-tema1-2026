@@ -8,11 +8,22 @@ public final class GridLoad extends EnergyPoint {
     private static final BigDecimal MAX_QUANTITY_CHANGE = BigDecimal.valueOf(10000);
 
     private final BigDecimal quantity;
+    private final Double reservesRequiredMW;
 
     public GridLoad(final String date, final String interval,
                     final int intervalIndex, final BigDecimal quantity) {
+        this(date, interval, intervalIndex, quantity, null);
+    }
+
+    public GridLoad(final String date, final String interval, final int intervalIndex,
+                    final BigDecimal quantity, final Double reservesRequiredMW) {
         super(DataType.GRID_LOAD, date, interval, intervalIndex);
         this.quantity = quantity;
+        this.reservesRequiredMW = reservesRequiredMW;
+    }
+
+    public Double getReservesRequiredMW() {
+        return reservesRequiredMW;
     }
 
     @Override

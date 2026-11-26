@@ -21,19 +21,19 @@ public abstract class EnergyPoint {
         this.intervalIndex = intervalIndex;
     }
 
-    public DataType getType() {
+    public final DataType getType() {
         return type;
     }
 
-    public String getDate() {
+    public final String getDate() {
         return date;
     }
 
-    public String getInterval() {
+    public final String getInterval() {
         return interval;
     }
 
-    public int getIntervalIndex() {
+    public final int getIntervalIndex() {
         return intervalIndex;
     }
 
